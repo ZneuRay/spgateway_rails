@@ -1,0 +1,14 @@
+require 'spec_helper'
+
+describe SpgatewayRails::SpgatewayHelper do
+	subject { ActionController::Base.new }
+	it 'should encrypt data' do
+		encrypted = subject.encrypt("12345678901234567890123456789012", "1234567890123456", "abcdefghijklmnop").unpack('H*').first
+		expect(encrypted).to eq("b91d3ece42c203729b38ae004e96efb9b64c41eeb074cad7ebafa3973181d233")
+	end
+
+	it 'should decrypt data' do
+		decrypted = subject.decrypt("12345678901234567890123456789012", "1234567890123456", ["b91d3ece42c203729b38ae004e96efb9b64c41eeb074cad7ebafa3973181d233"].pack('H*'))
+		expect(decrypted).to eq("abcdefghijklmnop")
+	end
+end
