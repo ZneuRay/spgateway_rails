@@ -8,11 +8,6 @@ module SpgatewayRails
 			PERIOD_TYPE = "M"
 			PERIOD_START_TYPE = 3
 			PERIOD_TIMES = "120"
-			
-
-			# POST_DATA_FIELDS.each do |f|
-			# 	mattr_accessor f.underscore.to_sym
-			# end
 
 			attr_accessor :post_data
 
@@ -40,6 +35,12 @@ module SpgatewayRails
 				@post_data[name] = value
 			end
 
+			# Setup value by block
+			def setup
+				yield self
+			end
+
+			# Get valid params from post_data
 			def get_url_params
 				params = {}
 				POST_DATA_FIELDS.each do |f|
@@ -48,10 +49,13 @@ module SpgatewayRails
 				URI.encode_www_form(params)
 			end
 
-			def get_encrypted_string
+			def get_post_data_string
 				SpgatewayRails::SpgatewayHelper.encrypt_data get_url_params
 			end
 
+			# Returns the value of time
+			#
+			# @return 14837404323385332
 			def generate_order_no
 				Time.now.to_f.to_s.tr('.', '')
 			end
@@ -67,6 +71,7 @@ module SpgatewayRails
 				end
 			end
 
+			# Returns the day of today with format which related to PeriodType
 			def get_period_point_of_today
 				today = Date.today
 				case @post_data["PeriodType"]

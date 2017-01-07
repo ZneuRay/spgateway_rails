@@ -1,4 +1,5 @@
 require 'action_controller'
+require 'action_view'
 
 module SpgatewayRails
 
@@ -23,8 +24,8 @@ require 'spgateway_rails/controller_helper'
 require 'spgateway_rails/view_helper'
 require 'spgateway_rails/spgateway_helper'
 require 'spgateway_rails/periodical/spgateway_periodical'
-require 'spgateway_rails/periodical/spgateway_return'
-require 'spgateway_rails/periodical/spgateway_notification'
+require 'spgateway_rails/periodical/periodical_return'
+require 'spgateway_rails/periodical/periodical_notification'
 
 ActionController::Base.send :include, SpgatewayRails::ControllerHelper
-ActionController::Base.send :include, SpgatewayRails::ViewHelper
+ActionView::Base.send :include, SpgatewayRails::ViewHelper
