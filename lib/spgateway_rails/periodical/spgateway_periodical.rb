@@ -20,9 +20,9 @@ module SpgatewayRails
 				@post_data["ProdDesc"] = "Please input the product description."
 				@post_data["PeriodAmt"] = PERIOD_AMOUNT
 				@post_data["PeriodType"] = PERIOD_TYPE
-				@post_data["PeriodPoint"] = get_period_point_of_today
 				@post_data["PeriodStartType"] = PERIOD_START_TYPE
 				@post_data["PeriodTimes"] = PERIOD_TIMES
+				reset_period_type
 			end
 
 			# Returns value by name
@@ -71,8 +71,8 @@ module SpgatewayRails
 				end
 			end
 
-			# Returns the day of today with format which related to PeriodType
-			def get_period_point_of_today
+			# Setup the day of today with format which related to PeriodType
+			def reset_period_type
 				today = Date.today
 				case @post_data["PeriodType"]
 				when "Y"
@@ -85,6 +85,7 @@ module SpgatewayRails
 					@post_data["PeriodType"] = PERIOD_TYPE
 					today.strftime('%d')
 				end
+				@post_data["PeriodPoint"] = today
 			end
 		end
 	end

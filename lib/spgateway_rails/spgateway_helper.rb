@@ -31,7 +31,7 @@ module SpgatewayRails
 		end
 
 		def self.decrypt(key, iv, encrypted_data)
-			encrypted_data = encrypted_data.pack('H*')
+			encrypted_data = [encrypted_data].pack('H*')
 			decipher = OpenSSL::Cipher::AES256.new(:CBC)
 			decipher.decrypt
 			decipher.padding = 0
