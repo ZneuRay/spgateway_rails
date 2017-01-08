@@ -22,7 +22,7 @@ module SpgatewayRails
 				@post_data["PeriodType"] = PERIOD_TYPE
 				@post_data["PeriodStartType"] = PERIOD_START_TYPE
 				@post_data["PeriodTimes"] = PERIOD_TIMES
-				reset_period_type
+				reset_period_point
 			end
 
 			# Returns value by name
@@ -72,7 +72,13 @@ module SpgatewayRails
 			end
 
 			# Setup the day of today with format which related to PeriodType
-			def reset_period_type
+			def reset_period_point
+				@post_data["PeriodPoint"] = get_period_time_of_today
+			end
+
+			private
+
+			def get_period_time_of_today
 				today = Date.today
 				case @post_data["PeriodType"]
 				when "Y"
@@ -85,7 +91,6 @@ module SpgatewayRails
 					@post_data["PeriodType"] = PERIOD_TYPE
 					today.strftime('%d')
 				end
-				@post_data["PeriodPoint"] = today
 			end
 		end
 	end
