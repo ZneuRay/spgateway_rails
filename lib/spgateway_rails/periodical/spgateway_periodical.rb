@@ -6,7 +6,7 @@ module SpgatewayRails
 			VERSION = '1.0'
 			PERIOD_AMOUNT = 1000
 			PERIOD_TYPE = "M"
-			PERIOD_START_TYPE = 3
+			PERIOD_START_TYPE = 2
 			PERIOD_TIMES = "120"
 
 			attr_accessor :post_data
