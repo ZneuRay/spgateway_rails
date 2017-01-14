@@ -7,7 +7,7 @@ module SpgatewayRails
 			PERIOD_AMOUNT = 1000
 			PERIOD_TYPE = "M"
 			PERIOD_START_TYPE = 2
-			PERIOD_TIMES = "120"
+			PERIOD_TIMES = "60"
 
 			attr_accessor :post_data
 
@@ -53,13 +53,6 @@ module SpgatewayRails
 				SpgatewayRails::SpgatewayHelper.encrypt_data get_url_params
 			end
 
-			# Returns the value of time
-			#
-			# @return 14837404323385332
-			def generate_order_no
-				Time.now.to_f.to_s.tr('.', '')
-			end
-
 			def self.service_url
 				case SpgatewayRails.config.mode
 				when :production
@@ -77,6 +70,13 @@ module SpgatewayRails
 			end
 
 			private
+
+			# Returns the value of time
+			#
+			# @return 14837404323385332
+			def generate_order_no
+				Time.now.to_f.to_s.tr('.', '')
+			end
 
 			def get_period_time_of_today
 				today = Date.today

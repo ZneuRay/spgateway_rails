@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ray"]
   spec.email         = ["ray9015@gmail.com"]
 
-  spec.summary       = %q{智付寶信用卡定期定額付款}
-  spec.description   = %q{智付寶信用卡定期定額付款}
+  spec.summary       = %q{Spgateway periodical gem for Ruby on Rails}
+  spec.description   = %q{Spgateway periodical gem for Ruby on Rails}
   spec.homepage      = "https://zneuray.github.com"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
