@@ -1,5 +1,6 @@
 require 'openssl'
 require 'base64'
+require 'digest'
 
 module SpgatewayRails
 	module SpgatewayHelper
@@ -39,6 +40,16 @@ module SpgatewayRails
 			decipher.iv = iv
 			data = decipher.update(encrypted_data) + decipher.final
 			strippadding data
+		end
+
+		def self.sha256_encode_trade_info(trade_info)
+			config = SpgatewayRails.config
+			sha256_encode config.hash_key, config.hash_iv, trade_info
+		end
+
+		def self.sha256_encode(key, iv, trade_info)
+			encode_string = "HashKey=#{key}&#{trade_info}&HashIV=#{iv}"
+			Digest::SHA256.hexdigest(encode_string).upcase
 		end
 
 		def self.strippadding(data)

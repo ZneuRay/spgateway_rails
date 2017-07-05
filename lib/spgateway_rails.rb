@@ -23,8 +23,11 @@ require 'spgateway_rails/error_codes'
 require 'spgateway_rails/controller_helper'
 require 'spgateway_rails/view_helper'
 require 'spgateway_rails/spgateway_helper'
+require 'spgateway_rails/spgateway_params'
+require 'spgateway_rails/spgateway_result'
 require 'spgateway_rails/periodical/spgateway_periodical'
 require 'spgateway_rails/periodical/periodical_result'
+require 'spgateway_rails/mpg/spgateway_mpg'
 
 ActionController::Base.send :include, SpgatewayRails::ControllerHelper
 ActionView::Base.send :include, SpgatewayRails::ViewHelper
