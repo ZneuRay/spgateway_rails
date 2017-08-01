@@ -40,7 +40,7 @@ module SpgatewayRails
 					# Because spgateway will skip the month if the day of month doesn't exist
 					day_of_month = today.strftime('%d').to_i
 					day_of_month = 28 if day_of_month > 28
-					day_of_month.to_s
+					'%02d' % day_of_month
 				when "W"
 					today.strftime('%u')
 				else
