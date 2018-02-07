@@ -3,6 +3,10 @@ module SpgatewayRails
 
     attr_accessor :post_data
 
+    def initialize
+      @post_data = {}
+    end
+
     # Returns value by name
     def [](name)
       @post_data[name]
@@ -29,12 +33,12 @@ module SpgatewayRails
     def get_url_params
       params = {}
       self.class::POST_DATA_FIELDS.each do |f|
-        params[f] = @post_data[f]
+        params[f] = @post_data[f] unless @post_data[f].nil?
       end
       URI.encode_www_form(params)
     end
 
-    def get_post_data_string
+    def get_encrypt_string
       SpgatewayRails::SpgatewayHelper.encrypt_data get_url_params
     end
     

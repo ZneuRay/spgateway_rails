@@ -9,8 +9,8 @@ module SpgatewayRails
 			MPG_LOGIN_TYPE = 0
 
 			def initialize
+				super
 				@config = SpgatewayRails.config
-				@post_data = {}
 				@post_data["MerchantID"] = @config.merchant_id
 				@post_data["RespondType"] = RESPOND_TYPE
 				@post_data["TimeStamp"] = Time.now.to_i
@@ -23,7 +23,7 @@ module SpgatewayRails
 			end
 
 			def get_trade_info
-				@trade_info ||= get_post_data_string
+				@trade_info ||= get_encrypt_string
 			end
 
 			def get_trade_sha

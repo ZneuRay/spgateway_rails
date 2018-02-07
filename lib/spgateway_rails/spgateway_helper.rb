@@ -10,6 +10,11 @@ module SpgatewayRails
 			encrypt config.hash_key, config.hash_iv, data
 		end
 
+		def self.encrypt_merchant_data(data)
+			config = SpgatewayRails.merchant_config
+			encrypt config.hash_key, config.hash_iv, data
+		end
+
 		def self.encrypt(key, iv, data)
 			cipher = OpenSSL::Cipher::AES256.new(:CBC)
 			cipher.encrypt
@@ -24,6 +29,11 @@ module SpgatewayRails
 		def self.add_padding(data, block_size=32)
 			pad = block_size - (data.length % block_size)
 			data + (pad.chr * pad)
+		end
+
+		def self.decrypt_merchant_data(encrypted_data)
+			config = SpgatewayRails.merchant_config
+			decrypt config.hash_key, config.hash_iv, encrypted_data
 		end
 
 		def self.decrypt_data(encrypted_data)
@@ -45,6 +55,12 @@ module SpgatewayRails
 		def self.sha256_encode_trade_info(trade_info)
 			config = SpgatewayRails.config
 			sha256_encode config.hash_key, config.hash_iv, trade_info
+		end
+
+		def self.sha256_encode_merchant_info(check_string)
+			config = SpgatewayRails.merchant_config
+			encode_string = "HashIV=#{config.hash_iv}&#{check_string}&HashKey=#{config.hash_key}"
+			Digest::SHA256.hexdigest(encode_string).upcase
 		end
 
 		def self.sha256_encode(key, iv, trade_info)

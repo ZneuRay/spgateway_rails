@@ -1,6 +1,17 @@
 module SpgatewayRails
   class SpgatewayResult
 
+    def initialize return_data
+      @raw_params = decrypt_data return_data
+      begin
+        @result_data = JSON.parse(@raw_params)
+        @respond_type = :json
+      rescue
+        @result_data = parse_raw_params
+        @respond_type = :string
+      end
+    end
+
     def get_raw_result
       @raw_params
     end
@@ -8,6 +19,20 @@ module SpgatewayRails
     def get_result
       @result_data
     end
+
+    def status
+      if @result_data["status"]
+        @result_data["status"]
+      else
+        nil
+      end
+    end
+
+    def success?
+      return true if status && status == 'SUCCESS'
+      false
+    end
+    
 
     private
 

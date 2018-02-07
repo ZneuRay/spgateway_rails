@@ -14,7 +14,15 @@ module SpgatewayRails
 		end
 
 		def spgateway_mpg_result raw_params
-			
+			MPG::MpgResult.new raw_params
+		end
+
+		def spgateway_merchant
+			@spgateway_merchant ||= Merchant::SpgatewayMerchant.new
+		end
+
+		def spgateway_merchant_result raw_params
+			Merchant::SpgatewayMerchantResult.new raw_params
 		end
 	end
 end

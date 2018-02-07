@@ -4,6 +4,10 @@ Ruby on Rails的[智付通](https://www.spgateway.com/)信用卡定期定額扣�
 
 ## 版本更新
 
+*0.5.0*
+
+* 新增商店建立
+
 *0.4.0*
 
 * 因智付通定期定額付款日期無法自行判斷，造成當月不存在該日期時將無法自動扣款，例如設定每月31日自動扣款，則無31日的月份將不會進行扣款，因此將超過28日的日期都調整至28日
@@ -103,7 +107,7 @@ spgateway_periodical_form(
 * 可自行產生AES加密結果放入`PostData_`內並實作發送要求
 
 ```ruby
-post_data = spgateway_periodical.get_post_data_string
+post_data = spgateway_periodical.get_encrypt_string
 ```
 
 ## 回傳資料

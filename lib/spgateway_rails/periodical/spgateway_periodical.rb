@@ -11,7 +11,7 @@ module SpgatewayRails
 			PERIOD_TIMES = "60"
 
 			def initialize
-				@post_data = {}
+				super
 				@post_data["RespondType"] = RESPOND_TYPE
 				@post_data["TimeStamp"] = Time.now.to_i
 				@post_data["Version"] = VERSION

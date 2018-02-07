@@ -8,7 +8,7 @@ module SpgatewayRails
 		def spgateway_periodical_form(btn_value="Go", btn_class="")
 			service_url = Periodical::SpgatewayPeriodical.service_url
 			merchant_id = SpgatewayRails.config.merchant_id
-			post_data = spgateway_periodical.get_post_data_string
+			post_data = spgateway_periodical.get_encrypt_string
 			form = '<form name="spgateway-periodical-form" id="spgateway-periodical-form" action="' << service_url << '" method="post">'
 			form << '<input type="hidden" name="MerchantID_" value="' << merchant_id << '">'
 			form << '<input type="hidden" name="PostData_" value="' << post_data << '">'
