@@ -27,8 +27,18 @@ module SpgatewayRails
         }
       end
 
+      # Add merchant
       def send_request
-        uri = URI(SpgatewayRails::Merchant::SpgatewayMerchant.service_url)
+        send_request SpgatewayRails::Merchant::SpgatewayMerchant.service_url
+      end
+
+      # Modify merchant
+      def send_modify_request
+        send_request "#{SpgatewayRails::Merchant::SpgatewayMerchant.service_url}/modify"
+      end
+
+      def send_request service_url
+        uri = URI(service_url)
 
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = true

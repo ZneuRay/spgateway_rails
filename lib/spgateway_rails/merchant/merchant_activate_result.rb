@@ -17,7 +17,6 @@ module SpgatewayRails
 
 			def valid?
 				check_code = SpgatewayHelper.sha256_encode_merchant_info(@check_string)
-				puts check_code
 				if @check_code == check_code
 					true
 				else
