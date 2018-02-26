@@ -5,7 +5,7 @@ module SpgatewayRails
 			@spgateway_periodical ||= Periodical::SpgatewayPeriodical.new
 		end
 
-		def spgateway_periodical_form(btn_value="Go", btn_class="")
+		def spgateway_periodical_form(btn_value: "Go", btn_class: "")
 			service_url = Periodical::SpgatewayPeriodical.service_url
 			merchant_id = SpgatewayRails.config.merchant_id
 			post_data = spgateway_periodical.get_encrypt_string
@@ -21,7 +21,7 @@ module SpgatewayRails
 			@spgateway_mpg ||= Mpg::SpgatewayMpg.new
 		end
 
-		def spgateway_mpg_form(btn_value="Go", btn_class="")
+		def spgateway_mpg_form(btn_value: "Go", btn_class: "")
 			service_url = Mpg::SpgatewayMpg.service_url
 			merchant_id = SpgatewayRails.config.merchant_id
 			trade_info = spgateway_mpg.get_trade_info

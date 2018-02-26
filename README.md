@@ -4,6 +4,10 @@ Ruby on Rails的[智付通](https://www.spgateway.com/)信用卡定期定額扣�
 
 ## 版本更新
 
+*0.5.2*
+
+* 修正`spgateway_periodical_form`與`spgateway_mpg_form`參數錯誤問題
+
 *0.5.1*
 
 * 新增平台商店修改
