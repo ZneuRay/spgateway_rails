@@ -2,7 +2,8 @@ module SpgatewayRails
 	module Mpg
 		class SpgatewayMpg < SpgatewayRails::SpgatewayParams
 			POST_DATA_FIELDS = %w( MerchantID RespondType TimeStamp Version LangType MerchantOrderNo Amt ItemDesc TradeLimit ExpireDate ReturnURL NotifyURL CustomerURL ClientBackURL Email EmailModify LoginType OrderComment CREDIT InstFlag CreditRed UNIONPAY WEBATM VACC CVS BARCODE)
-			SERVICE_TYPE = 'mpg_gateway'
+			SERVICE_TYPE = 'MPG'
+			SERVICE_ACTION = 'mpg_gateway'
 			RESPOND_TYPE = "String"
 			VERSION = '1.4'
 			MPG_AMOUNT = 1000

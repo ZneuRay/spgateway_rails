@@ -4,21 +4,8 @@ module SpgatewayRails
 	module Merchant
 		class SpgatewayMerchant < SpgatewayRails::SpgatewayParams
 
-      def get_encrypt_string
-        encode_param = URI.encode_www_form(@post_data)
-        SpgatewayRails::SpgatewayHelper.encrypt_merchant_data encode_param
-      end
-
-      def self.service_url
-        case SpgatewayRails.merchant_config.mode
-        when :production
-          "https://core.spgateway.com/API/AddMerchant"
-        when :development
-          "https://ccore.spgateway.com/API/AddMerchant"
-        else
-          "https://ccore.spgateway.com/API/AddMerchant"
-        end
-      end
+      SERVICE_TYPE = 'API'
+			SERVICE_ACTION = 'AddMerchant'
 
       def get_post_data
         post_data = {

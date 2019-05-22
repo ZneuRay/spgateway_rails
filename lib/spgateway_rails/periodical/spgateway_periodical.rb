@@ -2,7 +2,8 @@ module SpgatewayRails
 	module Periodical
 		class SpgatewayPeriodical < SpgatewayRails::SpgatewayParams
 			POST_DATA_FIELDS = %w( RespondType TimeStamp Version MerOrderNo ProdDesc PeriodAmt PeriodType PeriodPoint PeriodStartType PeriodTimes ReturnURL PeriodMemo PayerEmail EmailModify PaymentInfo OrderInfo NotifyURL BackURL)
-			SERVICE_TYPE = 'period'
+			SERVICE_TYPE = 'MPG'
+			SERVICE_ACTION = 'period'
 			RESPOND_TYPE = "String"
 			VERSION = '1.0'
 			PERIOD_AMOUNT = 1000

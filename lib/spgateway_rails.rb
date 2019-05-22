@@ -40,6 +40,8 @@ require 'spgateway_rails/mpg/spgateway_mpg'
 require 'spgateway_rails/mpg/mpg_result'
 require 'spgateway_rails/merchant/spgateway_merchant'
 require 'spgateway_rails/merchant/merchant_activate_result'
+require 'spgateway_rails/transaction/spgateway_transaction'
+require 'spgateway_rails/transaction/transaction_result'
 
 ActionController::Base.send :include, SpgatewayRails::ControllerHelper
 ActionView::Base.send :include, SpgatewayRails::ViewHelper

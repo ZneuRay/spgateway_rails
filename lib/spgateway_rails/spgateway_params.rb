@@ -35,7 +35,7 @@ module SpgatewayRails
       self.class::POST_DATA_FIELDS.each do |f|
         params[f] = @post_data[f] unless @post_data[f].nil?
       end
-      URI.encode_www_form(params)
+      URI.encode_www_form(params.sort.to_h)
     end
 
     def get_encrypt_string
@@ -45,11 +45,11 @@ module SpgatewayRails
     def self.service_url
       case SpgatewayRails.config.mode
       when :production
-        "https://core.spgateway.com/MPG/#{self::SERVICE_TYPE}"
+        "https://core.spgateway.com/#{self::SERVICE_TYPE}/#{self::SERVICE_ACTION}"
       when :development
-        "https://ccore.spgateway.com/MPG/#{self::SERVICE_TYPE}"
+        "https://ccore.spgateway.com/#{self::SERVICE_TYPE}/#{self::SERVICE_ACTION}"
       else
-        "https://ccore.spgateway.com/MPG/#{self::SERVICE_TYPE}"
+        "https://ccore.spgateway.com/#{self::SERVICE_TYPE}/#{self::SERVICE_ACTION}"
       end
     end
 
