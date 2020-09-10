@@ -45,11 +45,11 @@ module SpgatewayRails
     def self.service_url
       case SpgatewayRails.config.mode
       when :production
-        "https://core.spgateway.com/#{self::SERVICE_TYPE}/#{self::SERVICE_ACTION}"
+        "https://core.newebpay.com/#{self::SERVICE_TYPE}/#{self::SERVICE_ACTION}"
       when :development
-        "https://ccore.spgateway.com/#{self::SERVICE_TYPE}/#{self::SERVICE_ACTION}"
+        "https://ccore.newebpay.com/#{self::SERVICE_TYPE}/#{self::SERVICE_ACTION}"
       else
-        "https://ccore.spgateway.com/#{self::SERVICE_TYPE}/#{self::SERVICE_ACTION}"
+        "https://ccore.newebpay.com/#{self::SERVICE_TYPE}/#{self::SERVICE_ACTION}"
       end
     end
 
